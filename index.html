@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+        <header>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -25,6 +25,19 @@
             <h2>Welcome to SyncShare</h2>
             <p>Share and manage your files easily and securely.</p>
         </section>
+	<h1>Upload a File</h1>
+	<form id="uploadForm" enctype="multipart/form-data" action="http://localhost:3000/upload" method="POST">
+	<label for="fileInput">Select a file:</label>
+    <input type="file" name="file" id="fileInput" required>
+    <button type="submit">Upload</button>
+</form>
+	<div id="uploadProgress">
+        <p id="fileName"></p>
+        <div id="progressBar">
+            <div id="progress"></div>
+        </div>
+    </div>
+    <p id="message"></p>
     </main>
     <footer>
         <p>&copy; 2024 SyncShare. All rights reserved.</p>
