@@ -1,0 +1,17 @@
+/syncshare.github.io
+  /api          # For backend endpoints (if deploying on Vercel)
+    /upload.js
+  /public        # Static files for frontend
+    /index.html
+    /styles.css
+    /history.html
+    /dashboard.html
+    /about.html
+    /login.html
+  /CNAME
+  /src           # Source code (optional)
+  /file-upload-backend
+    /node_modules
+    /server.js
+    /package.json
+    /uploads
