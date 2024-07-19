@@ -11,7 +11,7 @@ function uploadFile() {
         formData.append("file", file);
         
         // Replace with your actual Vercel backend endpoint
-        fetch('https://syncshare-github-io-git-main-deergha2s-projects.vercel.app', {
+        fetch('https://syncshare-github-io-git-main-deergha2s-projects.vercel.app/api/upload', {
             method: 'POST',
             body: formData
         })
