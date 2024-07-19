@@ -1,5 +1,6 @@
 function uploadFile() {
     var fileInput = document.getElementById("fileInput");
+    var messageElement = document.getElementById("message");
     
     if (fileInput.files.length > 0) {
         var file = fileInput.files[0];
@@ -18,13 +19,19 @@ function uploadFile() {
         })
         .then(data => {
             console.log('File uploaded:', data.filePath);
-            document.getElementById("message").innerText = "Upload Successful: " + data.filePath;
+            if (messageElement) {
+                messageElement.innerText = "Upload Successful: " + data.filePath;
+            }
         })
         .catch(error => {
             console.error('Error uploading file:', error);
-            document.getElementById("message").innerText = "Upload Failed: " + error.message;
+            if (messageElement) {
+                messageElement.innerText = "Upload Failed: " + error.message;
+            }
         });
     } else {
-        document.getElementById("message").innerText = "Please select a file";
+        if (messageElement) {
+            messageElement.innerText = "Please select a file";
+        }
     }
 }

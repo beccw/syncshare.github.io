@@ -19,7 +19,7 @@ const handler = nextConnect();
 
 // Handle preflight requests for CORS
 handler.options((req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://www.syncshare.shop');
+    res.setHeader('Access-Control-Allow-Origin', 'https://www.syncshare.shop'); // Specify allowed origin
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.status(200).end();
@@ -30,7 +30,7 @@ handler.use(upload.single('file'));
 
 // Handle POST request
 handler.post((req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://www.syncshare.shop');
+    res.setHeader('Access-Control-Allow-Origin', 'https://www.syncshare.shop'); // Specify allowed origin
     
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded' });
