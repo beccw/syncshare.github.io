@@ -11,7 +11,14 @@ document.getElementById('uploadForm').addEventListener('submit', async (event) =
       });
       const result = await response.json();
       document.getElementById('uploadStatus').textContent = result.message;
-      console.log('File URL:', result.url); // Optional: Log the file URL
+      const fileUrl = result.url;
+      console.log('File URL:', fileUrl); // Optional: Log the file URL
+  
+      // Display the uploaded file
+      const uploadedFileLink = document.createElement('a');
+      uploadedFileLink.href = fileUrl;
+      uploadedFileLink.textContent = 'View Uploaded File';
+      document.getElementById('uploadStatus').appendChild(uploadedFileLink);
     } catch (error) {
       document.getElementById('uploadStatus').textContent = 'Upload failed!';
     }

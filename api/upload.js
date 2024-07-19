@@ -14,9 +14,9 @@ export default async function handler(req, res) {
 
       const file = files.file;
       const blobName = `${uuidv4()}-${file.originalFilename}`;
-      const { url } = await put(blobName, file.filepath, { access: 'public' });
 
       try {
+        const { url } = await put(blobName, file.filepath, { access: 'public' });
         res.status(200).json({ message: 'File uploaded successfully!', url });
       } catch (uploadError) {
         res.status(500).json({ error: 'Error uploading the file' });
