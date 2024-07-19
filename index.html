@@ -8,14 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-        <header>
+    <header>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="history.html">History</a></li>
                 <li><a href="dashboard.html">Dashboard</a></li>
-		<li><a href="login.html">Login</a></li>
+                <li><a href="login.html">Login</a></li>
             </ul>
         </nav>
         <h1>SyncShare</h1>
@@ -25,22 +25,63 @@
             <h2>Welcome to SyncShare</h2>
             <p>Share and manage your files easily and securely.</p>
         </section>
-	<h1>Upload a File</h1>
-	<form id="uploadForm" enctype="multipart/form-data" action="http://localhost:3000/upload" method="POST">
-	<label for="fileInput">Select a file:</label>
-    <input type="file" name="file" id="fileInput" required>
-    <button type="submit">Upload</button>
-</form>
-	<div id="uploadProgress">
-        <p id="fileName"></p>
-        <div id="progressBar">
-            <div id="progress"></div>
+        <h1>Upload a File</h1>
+        <form id="uploadForm" onsubmit="uploadFile(); return false;">
+            <label for="fileInput">Select a file:</label>
+            <input type="file" name="file" id="fileInput" required>
+            <button type="submit">Upload</button>
+        </form>
+        <div id="uploadProgress">
+            <p id="fileName"></p>
+            <div id="progressBar">
+                <div id="progress"></div>
+            </div>
         </div>
-    </div>
-    <p id="message"></p>
+        <p id="upload"></p>
     </main>
     <footer>
         <p>&copy; 2024 SyncShare. All rights reserved.</p>
     </footer>
+    <script>
+        function saveMessage(filePath) {
+            // Implement this function if needed to handle the file path or filename
+            console.log('File saved at:', filePath);
+        }
+
+        function uploadFile() {
+            var fileInput = document.getElementById("fileInput"); // Make sure this ID matches the one in your HTML
+            
+            // Check if a file is selected
+            if (fileInput.files.length > 0) {
+                var uploadText = document.getElementById("upload").innerHTML;
+                document.getElementById("upload").innerHTML = "Uploading...";
+                
+                var file = fileInput.files[0];
+                var formData = new FormData();
+                formData.append("file", file);
+                
+                // Replace with your actual Vercel backend endpoint
+                fetch('https://syncshare-github-io-git-main-deergha2s-projects.vercel.app', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('File uploaded:', data.filename);
+                    document.getElementById("upload").innerHTML = "Upload Successful";
+                    saveMessage(data.filename); // Assuming saveMessage handles the file path or filename
+                })
+                .catch(error => {
+                    console.error('Error uploading file:', error);
+                    document.getElementById("upload").innerHTML = "Upload Failed";
+                });
+            } else {
+                document.getElementById("upload").innerHTML = "Please select a file";
+                setTimeout(function() {
+                    document.getElementById("upload").innerHTML = uploadText;
+                }, 2000);
+            }
+        }
+    </script>
 </body>
 </html>

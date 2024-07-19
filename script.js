@@ -1,5 +1,5 @@
 function uploadFile() {
-    var fileInput = document.getElementById("file");
+    var fileInput = document.getElementById("fileInput"); // Make sure this ID matches the one in your HTML
     
     // Check if a file is selected
     if (fileInput.files.length > 0) {
@@ -10,16 +10,16 @@ function uploadFile() {
         var formData = new FormData();
         formData.append("file", file);
         
-        // Adjust 'http://localhost:your_port/upload' to your actual backend endpoint
-        fetch('http://localhost:your_port/upload', {
+        // Replace with your actual Vercel backend endpoint
+        fetch('https://syncshare-github-io-git-main-deergha2s-projects.vercel.app', {
             method: 'POST',
             body: formData
         })
         .then(response => response.json())
         .then(data => {
-            console.log('File uploaded:', data.filePath);
+            console.log('File uploaded:', data.filename);
             document.getElementById("upload").innerHTML = "Upload Successful";
-            saveMessage(data.filePath); // Assuming saveMessage handles the file path
+            saveMessage(data.filename); // Assuming saveMessage handles the file path or filename
         })
         .catch(error => {
             console.error('Error uploading file:', error);
