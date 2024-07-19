@@ -1,34 +1,30 @@
 function uploadFile() {
-    var fileInput = document.getElementById("fileInput"); // Make sure this ID matches the one in your HTML
+    var fileInput = document.getElementById("fileInput");
     
-    // Check if a file is selected
     if (fileInput.files.length > 0) {
-        var uploadText = document.getElementById("upload").innerHTML;
-        document.getElementById("upload").innerHTML = "Uploading...";
-        
         var file = fileInput.files[0];
         var formData = new FormData();
         formData.append("file", file);
         
-        // Replace with your actual Vercel backend endpoint
         fetch('https://syncshare-github-io-git-main-deergha2s-projects.vercel.app/api/upload', {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-            console.log('File uploaded:', data.filename);
-            document.getElementById("upload").innerHTML = "Upload Successful";
-            saveMessage(data.filename); // Assuming saveMessage handles the file path or filename
+            console.log('File uploaded:', data.filePath);
+            document.getElementById("message").innerText = "Upload Successful: " + data.filePath;
         })
         .catch(error => {
             console.error('Error uploading file:', error);
-            document.getElementById("upload").innerHTML = "Upload Failed";
+            document.getElementById("message").innerText = "Upload Failed: " + error.message;
         });
     } else {
-        document.getElementById("upload").innerHTML = "Please select a file";
-        setTimeout(function() {
-            document.getElementById("upload").innerHTML = uploadText;
-        }, 2000);
+        document.getElementById("message").innerText = "Please select a file";
     }
 }
