@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@vercel/blob": "^0.23.4",
     "multer": "^1.4.5-lts.1"
   }
 }

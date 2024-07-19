@@ -5,12 +5,13 @@ document.getElementById('uploadForm').addEventListener('submit', async (event) =
     formData.append('file', fileInput.files[0]);
   
     try {
-      const response = await fetch('https://your-vercel-domain.vercel.app/api/upload', {
+      const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData
       });
       const result = await response.json();
       document.getElementById('uploadStatus').textContent = result.message;
+      console.log('File URL:', result.url); // Optional: Log the file URL
     } catch (error) {
       document.getElementById('uploadStatus').textContent = 'Upload failed!';
     }
