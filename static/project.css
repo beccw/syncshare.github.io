@@ -1,0 +1,244 @@
+/* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0; /* Light background color */
+    color: #333; /* Default text color */
+    line-height: 1.6; /* Improved readability */
+}
+
+header, footer {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+nav {
+    background-color: #4CAF50; /* Consistent background color for nav */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    padding: 1rem 0; /* Vertical padding for spacing */
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Styling for specific sections */
+section {
+    padding: 2rem;
+    text-align: center;
+    background-color: #fff;
+    margin: 1rem auto;
+    border: 1px solid #ccc; /* Border for section */
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    max-width: 800px; /* Center the content and limit width */
+}
+
+/* Additional styling for specific sections */
+section#about,
+section#history,
+section#anonymous-upload {
+    background-color: #fff; /* White background for specific sections */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle depth effect */
+}
+
+/* Enhancements for Navigation Links */
+nav ul li a#about,
+nav ul li a#history,
+nav ul li a#anonymous {
+    background-color: #4CAF50; /* Green background for specific links */
+}
+
+nav ul li a#about:hover,
+nav ul li a#history:hover,
+nav ul li a#anonymous:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Styling for forms */
+.auth-form {
+    max-width: 400px;
+    margin: 50px auto; /* Center the form horizontally and add space from top */
+    text-align: left;
+    background-color: #fff; /* White background for forms */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle depth effect */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.auth-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333; /* Darker text color for labels */
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    font-size: 1rem; /* Improved readability */
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: #4CAF50; /* Green border color on focus */
+}
+
+.auth-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem; /* Improved readability */
+}
+
+.auth-form button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Alert messages */
+.alert {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    font-size: 1rem; /* Improved readability */
+}
+
+.alert-success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.alert-danger {
+    background-color: #f44336;
+    color: white;
+}
+
+.alert-warning {
+    background-color: #ff9800;
+    color: white;
+}
+
+.alert-error {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Additional styling for registration page */
+h2 {
+    margin-bottom: 2rem;
+    color: #4CAF50; /* Matching the header color */
+}
+
+p a {
+    color: #4CAF50; /* Matching link color */
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Styling for login page */
+.login-page {
+    background-color: #f0f0f0; /* Light background color */
+}
+
+.login-form {
+    max-width: 400px;
+    margin: 50px auto; /* Center the form horizontally and add space from top */
+    text-align: left;
+    background-color: #fff; /* White background for forms */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle depth effect */
+}
+
+.login-form h2 {
+    color: #4CAF50; /* Green text for login form title */
+}
+
+.login-form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333; /* Darker text color for labels */
+}
+
+.login-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    font-size: 1rem; /* Improved readability */
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: #4CAF50; /* Green border color on focus */
+}
+
+.login-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem; /* Improved readability */
+}
+
+.login-form button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.login-form p a {
+    color: #4CAF50; /* Green text for links */
+    text-decoration: none;
+}
+
+.login-form p a:hover {
+    text-decoration: underline; /* Underline on hover */
+}

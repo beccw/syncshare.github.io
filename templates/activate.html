@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activate Your SyncShare Account</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='project.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('main.about') }}">About</a></li>
+                <li><a href="{{ url_for('main.history') }}">History</a></li>
+                {% if 'username' in session %}
+                    <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('main.login') }}">Login</a></li>
+                    <li><a href="{{ url_for('main.register') }}">Register</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('main.anonymous_upload') }}">Send File Anonymously</a></li>
+            </ul>
+        </nav>
+        <h1>Activate Your SyncShare Account</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Account Activation</h2>
+            {% if activation_success %}
+                <div class="alert alert-success">Your account has been successfully activated. You can now <a href="{{ url_for('main.login') }}">log in</a>.</div>
+            {% else %}
+                <div class="alert alert-danger">Failed to activate your account. Please contact support for assistance.</div>
+            {% endif %}
+        </section>
+    </main>
+    <footer>
+        &copy; {{ current_year }} SyncShare. All rights reserved.
+    </footer>
+</body>
+</html>

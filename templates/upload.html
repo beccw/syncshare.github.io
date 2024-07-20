@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='project.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('main.about') }}">About</a></li>
+                <li><a href="{{ url_for('main.history') }}">History</a></li>
+                {% if 'username' in session %}
+                    <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('main.login') }}">Login</a></li>
+                    <li><a href="{{ url_for('main.register') }}">Register</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('main.anonymous_upload') }}">Send File Anonymously</a></li>
+            </ul>
+        </nav>
+        <h1>Upload File</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Upload a file</h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+                <input type="file" name="file" required><br>
+                <button type="submit">Upload</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        &copy; {{ current_year }} SyncShare. All rights reserved.
+    </footer>
+</body>
+</html>
+    </footer>
+</body>
+</html>

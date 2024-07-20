@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to SyncShare!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='project.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to SyncShare!</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li><a href="{{ url_for('main.about') }}">About</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('main.history') }}">History</a></li>
+                <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('main.login') }}">Login</a></li>
+                <li><a href="{{ url_for('main.register') }}">Register</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('main.anonymous_upload') }}">Send File Anonymously</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>SyncShare - add a logo here?</h2>
+    </section>
+
+    <footer>
+        &copy; {{ current_year }} SyncShare. All rights reserved.
+    </footer>
+</body>
+</html>
