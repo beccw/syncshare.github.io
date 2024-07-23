@@ -5,44 +5,45 @@
     box-sizing: border-box;
 }
 
+/* Basic styling */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f0; /* Light background color */
+    background-color: #f9f9f9; /* Light and neutral background color */
     color: #333; /* Default text color */
     line-height: 1.6; /* Improved readability */
 }
 
-header, footer {
-    background-color: #4CAF50;
+/* Header styling */
+header {
+    background-color: #6ABF69; /* Fresh green color */
     color: white;
-    padding: 1rem;
+    padding: 1.5rem;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
 
+/* Navigation styling */
 nav {
-    background-color: #4CAF50; /* Consistent background color for nav */
+    background-color: #4CAF50; /* Green background for nav */
+    padding: 0.5rem 0;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
     padding: 0;
-    text-align: center;
-    padding: 1rem 0; /* Vertical padding for spacing */
 }
 
 nav ul li {
-    display: inline-block;
-    margin-right: 20px;
+    margin: 0 15px;
 }
 
 nav ul li a {
-    display: inline-block;
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -50,98 +51,82 @@ nav ul li a:hover {
     background-color: #45a049; /* Darker green on hover */
 }
 
-/* Styling for specific sections */
+/* Section styling */
 section {
     padding: 2rem;
     text-align: center;
-    background-color: #fff;
-    margin: 1rem auto;
-    border: 1px solid #ccc; /* Border for section */
-    border-radius: 8px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #ffffff; /* Clean white background */
+    margin: 2rem auto;
+    border: 1px solid #e0e0e0; /* Light border for subtle separation */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     max-width: 800px; /* Center the content and limit width */
 }
 
-/* Additional styling for specific sections */
-section#about,
-section#history,
-section#anonymous-upload {
-    background-color: #fff; /* White background for specific sections */
+/* Specific sections styling */
+section#about, section#history, section#anonymous-upload {
+    background-color: #ffffff; /* Consistent white background */
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle depth effect */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
 }
 
-/* Enhancements for Navigation Links */
-nav ul li a#about,
-nav ul li a#history,
-nav ul li a#anonymous {
-    background-color: #4CAF50; /* Green background for specific links */
-}
-
-nav ul li a#about:hover,
-nav ul li a#history:hover,
-nav ul li a#anonymous:hover {
-    background-color: #45a049; /* Darker green on hover */
-}
-
-/* Styling for forms */
-.auth-form {
-    max-width: 400px;
-    margin: 50px auto; /* Center the form horizontally and add space from top */
-    text-align: left;
-    background-color: #fff; /* White background for forms */
+/* Forms styling */
+.auth-form, .login-form {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #ffffff; /* White background for forms */
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle depth effect */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
 }
 
 .form-group {
     margin-bottom: 1.5rem;
 }
 
-.auth-form label {
+.auth-form label, .login-form label {
     font-weight: bold;
     display: block;
     margin-bottom: 0.5rem;
-    color: #333; /* Darker text color for labels */
+    color: #555; /* Darker text color for labels */
 }
 
-.auth-form input {
+.auth-form input, .login-form input {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     transition: border-color 0.3s ease;
-    font-size: 1rem; /* Improved readability */
+    font-size: 1rem;
 }
 
-.auth-form input:focus {
+.auth-form input:focus, .login-form input:focus {
     outline: none;
     border-color: #4CAF50; /* Green border color on focus */
 }
 
-.auth-form button {
+.auth-form button, .login-form button {
     background-color: #4CAF50;
     color: white;
     padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 1rem; /* Improved readability */
+    font-size: 1rem;
 }
 
-.auth-form button:hover {
+.auth-form button:hover, .login-form button:hover {
     background-color: #45a049; /* Darker green on hover */
 }
 
-/* Alert messages */
+/* Alert messages styling */
 .alert {
     padding: 0.75rem;
     margin-bottom: 1rem;
-    border-radius: 4px;
-    font-size: 1rem; /* Improved readability */
+    border-radius: 8px;
+    font-size: 1rem;
 }
 
 .alert-success {
@@ -164,14 +149,14 @@ nav ul li a#anonymous:hover {
     color: white;
 }
 
-/* Additional styling for registration page */
+/* Miscellaneous styling */
 h2 {
     margin-bottom: 2rem;
-    color: #4CAF50; /* Matching the header color */
+    color: #4CAF50; /* Green text for headers */
 }
 
 p a {
-    color: #4CAF50; /* Matching link color */
+    color: #4CAF50; /* Green text for links */
     text-decoration: none;
 }
 
@@ -179,66 +164,6 @@ p a:hover {
     text-decoration: underline; /* Underline on hover */
 }
 
-/* Styling for login page */
 .login-page {
-    background-color: #f0f0f0; /* Light background color */
-}
-
-.login-form {
-    max-width: 400px;
-    margin: 50px auto; /* Center the form horizontally and add space from top */
-    text-align: left;
-    background-color: #fff; /* White background for forms */
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle depth effect */
-}
-
-.login-form h2 {
-    color: #4CAF50; /* Green text for login form title */
-}
-
-.login-form label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #333; /* Darker text color for labels */
-}
-
-.login-form input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
-    font-size: 1rem; /* Improved readability */
-}
-
-.login-form input:focus {
-    outline: none;
-    border-color: #4CAF50; /* Green border color on focus */
-}
-
-.login-form button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 1rem; /* Improved readability */
-}
-
-.login-form button:hover {
-    background-color: #45a049; /* Darker green on hover */
-}
-
-.login-form p a {
-    color: #4CAF50; /* Green text for links */
-    text-decoration: none;
-}
-
-.login-form p a:hover {
-    text-decoration: underline; /* Underline on hover */
+    background-color: #f9f9f9; /* Light background color */
 }

@@ -3,32 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SyncShare - Register</title>
+    <title>Register - SyncShare</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='project.css') }}">
 </head>
 <body>
     <header>
-        <h1>SyncShare - Register</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('main.about') }}">About</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('main.history') }}">History</a></li>
+                    <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('main.login') }}">Login</a></li>
+                    <li><a href="{{ url_for('main.register') }}">Register</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('main.anonymous_upload') }}">Send File Anonymously</a></li>
+            </ul>
+        </nav>
+        <h1>Register</h1>
     </header>
-
-    <nav>
-        <ul>
-            <li><a href="{{ url_for('main.index') }}">Home</a></li>
-            <li><a href="{{ url_for('main.about') }}">About</a></li>
-            {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('main.history') }}">History</a></li>
-                <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
-                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
-            {% else %}
-                <li><a href="{{ url_for('main.login') }}">Login</a></li>
-                <li><a href="{{ url_for('main.register') }}">Register</a></li>
-            {% endif %}
-            <li><a href="{{ url_for('main.anonymous_upload') }}">Send File Anonymously</a></li>
-        </ul>
-    </nav>
-
-    <section class="register-section">
-        <div class="register-container">
+    <main>
+        <section>
             <h2>Register</h2>
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
@@ -39,37 +37,26 @@
                     {% endfor %}
                 {% endif %}
             {% endwith %}
-            
-            <form action="{{ url_for('main.register') }}" method="POST" class="auth-form">
+            <form action="{{ url_for('main.register') }}" method="POST">
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                
-                <div class="form-group">
-                    <label for="confirm_password">Confirm Password:</label>
-                    <input type="password" id="confirm_password" name="confirm_password" required>
-                </div>
-                
                 <button type="submit">Register</button>
             </form>
-            
-            <p>Already have an account? <a href="{{ url_for('main.login') }}">Log in</a></p>
-        </div>
-    </section>
-
+            <p><a href="{{ url_for('main.login') }}">Already have an account? Log in</a></p>
+        </section>
+    </main>
     <footer>
-        <p>&copy; {{ current_year }} SyncShare. All rights reserved.</p>
+        &copy; {{ current_year }} SyncShare. All rights reserved.
     </footer>
 </body>
 </html>

@@ -3,37 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About SyncShare</title>
+    <title>About - SyncShare</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='project.css') }}">
 </head>
 <body>
     <header>
-        <h1>SyncShare - About</h1>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="{{ url_for('main.index') }}">Home</a></li>
-            <li><a href="{{ url_for('main.about') }}">About</a></li>
-            {% if 'username' in session %}
-                <li><a href="{{ url_for('main.history') }}">History</a></li>
-                <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
-                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
-            {% else %}
+        <h1>About SyncShare</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('main.about') }}">About</a></li>
                 <li><a href="{{ url_for('main.login') }}">Login</a></li>
                 <li><a href="{{ url_for('main.register') }}">Register</a></li>
-            {% endif %}
-            <li><a href="{{ url_for('main.anonymous_upload') }}">Send File Anonymously</a></li>
-        </ul>
-    </nav>
-
-    <section>
+                <li><a href="{{ url_for('main.anonymous_upload') }}">Send File Anonymously</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
         <h2>About SyncShare</h2>
-        <p>SyncShare is dedicated to providing top-notch services to our clients, ensuring secure and efficient file transfers.</p>
-    </section>
-
+        <p>SyncShare is a platform designed to facilitate anonymous and registered file sharing securely and efficiently.</p>
+        <p>Current Year: {{ current_year }}</p>
+    </main>
     <footer>
-        &copy; SyncShare. All rights reserved.
+        <p>© {{ current_year }} SyncShare. All rights reserved.</p>
     </footer>
 </body>
 </html>

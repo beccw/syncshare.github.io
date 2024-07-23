@@ -3,52 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SyncShare - Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='project.css') }}">
+    <title>Login - SyncShare</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="login-page">
+<body>
     <header>
         <h1>SyncShare - Login</h1>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="{{ url_for('main.index') }}">Home</a></li>
-            <li><a href="{{ url_for('main.about') }}">About</a></li>
-            {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('main.history') }}">History</a></li>
-                <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
-                <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
-            {% else %}
-                <li><a href="{{ url_for('main.login') }}">Login</a></li>
-                <li><a href="{{ url_for('main.register') }}">Register</a></li>
-            {% endif %}
-            <li><a href="{{ url_for('main.anonymous_upload') }}">Send File Anonymously</a></li>
-        </ul>
-    </nav>
-
-    <section class="login-form">
-        <h2>Login</h2>
-        <form action="{{ url_for('main.login') }}" method="POST">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <button type="submit">Login</button>
-            </div>
+    <main>
+        <form method="POST" action="{{ url_for('main.login') }}">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Log In</button>
         </form>
-        <div class="form-footer">
-            <p>Don't have an account? <a href="{{ url_for('main.register') }}">Register</a></p>
-        </div>
-    </section>
+        <p>Don't have an account? <a href="{{ url_for('main.register') }}">Register here</a>.</p>
+        <p><a href="#">Forgot Password?</a></p>
+    </main>
 
     <footer>
-        &copy; SyncShare. All rights reserved.
+        <p>© SyncShare. All rights reserved.</p>
     </footer>
 </body>
 </html>

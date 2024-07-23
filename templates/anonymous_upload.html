@@ -8,53 +8,23 @@
 </head>
 <body>
     <header>
+        <h1>Send File Anonymously</h1>
         <nav>
             <ul>
                 <li><a href="{{ url_for('main.index') }}">Home</a></li>
                 <li><a href="{{ url_for('main.about') }}">About</a></li>
-                {% if 'username' in session %}
-                    <li><a href="{{ url_for('main.history') }}">History</a></li>
-                    <li><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
-                    <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
-                {% else %}
-                    <li><a href="{{ url_for('main.login') }}">Login</a></li>
-                    <li><a href="{{ url_for('main.register') }}">Register</a></li>
-                {% endif %}
+                <li><a href="{{ url_for('main.login') }}">Login</a></li>
+                <li><a href="{{ url_for('main.register') }}">Register</a></li>
                 <li><a href="{{ url_for('main.anonymous_upload') }}">Send File Anonymously</a></li>
             </ul>
         </nav>
-        <h1>Send File Anonymously</h1>
     </header>
     <main>
-        <section>
-            <h2>Upload File</h2>
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-                        <div class="alert alert-{{ category }}">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-            
-            <form action="{{ url_for('main.anonymous_upload') }}" method="POST" enctype="multipart/form-data" class="file-upload-form">
-                <div class="form-group">
-                    <label for="file">Select File:</label>
-                    <input type="file" id="file" name="file" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="recipient_email">Recipient's Email:</label>
-                    <input type="email" id="recipient_email" name="recipient_email" required>
-                </div>
-                
-                <button type="submit">Upload and Send</button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        &copy; {{ current_year }} SyncShare. All rights reserved.
-    </footer>
-</body>
-</html>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="file">Choose a file to upload:</label>
+            <input type="file" name="file" id="file">
+            <br><br>
+            <label for="recipient_email">Recipient Email (optional):</label>
+            <input type="email" name="recipient_email" id="recipient_email">
+            <br><br>
+            <button type="

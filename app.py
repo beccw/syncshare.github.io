@@ -1,60 +1,44 @@
-from flask import Flask, current_app
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
-from flask_mail import Mail, Message
+from flask_mail import Mail
 from flask_login import LoginManager
+from authlib.integrations.flask_client import OAuth
 from dotenv import load_dotenv
 import os
-from datetime import datetime
 
-# Load environment variables from .env file
+# Load environment variables
 load_dotenv()
 
-# Initialize Flask extensions outside of the create_app function
-db = SQLAlchemy()
-bcrypt = Bcrypt()
-migrate = Migrate()
-mail = Mail()
-login_manager = LoginManager()
+app = Flask(__name__)
 
-def create_app():
-    app = Flask(__name__, template_folder='templates', static_url_path='/static', static_folder='static')
-    app.secret_key = os.getenv('SECRET_KEY')
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# Configuration
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'
+app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
+app.config['MAIL_PORT'] = os.getenv('MAIL_PORT')
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS')
 
-    # Load other configurations
-    app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')
-    app.config['MAIL_PORT'] = os.getenv('MAIL_PORT')
-    app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS')
-    app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
-    app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+# Initialize extensions
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
+mail = Mail(app)
+login_manager = LoginManager(app)
+login_manager.login_view = 'main.login'
 
-    # Initialize extensions within the application context
-    db.init_app(app)
-    bcrypt.init_app(app)
-    migrate.init_app(app, db)
-    mail.init_app(app)
-    login_manager.init_app(app)
-    login_manager.login_view = 'main.login'
+# Initialize OAuth
+oauth = OAuth(app)
 
-    # Import blueprints within the app context to avoid circular imports
-    from route_modules import main
-    app.register_blueprint(main)
+# Register blueprints
+from main import main as main_blueprint  # Import the blueprint
+app.register_blueprint(main_blueprint)
 
-    # Import models to create database tables
-    from model_modules import User, FileUpload
-
-    @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
-
-    with app.app_context():
-        db.create_all()
-
-    return app
+# Define the user loader callback
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 if __name__ == '__main__':
-    app = create_app()
-    app.run(debug=True)
+    app.run(debug=True)  # Set to False in production
